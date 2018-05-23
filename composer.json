@@ -1,0 +1,13 @@
+{
+    "name": "nui/nui-yii",
+    "description": "nui",
+    "require": {
+        "yiisoft/yii2-smarty": "*"
+    },
+    "authors": [
+        {
+            "name": "zhangyanhe",
+            "email": "zhangyanhe@njfae.cn"
+        }
+    ]
+}

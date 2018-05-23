@@ -1,0 +1,16 @@
+{
+  "name": "nui/nui-yii",
+  "require": {
+    "yiisoft/yii2-smarty": "^2.0"
+  },
+  "authors": [
+    {
+      "name": "zhangyanhe",
+      "email": "zhangyanhe@njfae.cn"
+    }
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {"nui\\Nui\\": "src/"}
+  }
+}
