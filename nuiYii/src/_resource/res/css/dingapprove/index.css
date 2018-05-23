@@ -1,0 +1,36 @@
+body{
+    background-color: #fff;
+}
+.shouye-btns{
+    margin: 2.9rem auto;
+    text-align: center;
+}
+.shouye-btns .shouye-btn{
+    display: block;
+    width:33%;
+    height:1.7rem;
+    position: relative;
+    color: #3989ff;
+}
+.shouye-btns .shouye-btn .mark{
+    position: absolute;
+    width:0.2rem;
+    height:0.2rem;
+    background-color: #ff3e3b;
+    border-radius: 50%;
+    bottom: 30%;
+    right: 18%;
+}
+.shouye-btns .shouye-btn img{
+    vertical-align: middle;
+    margin-bottom:0.3rem;
+}
+.shouye-btns .shouye-btn .btn_1,.btn_3{
+    width:0.6rem;
+    height:0.76rem;
+}
+.shouye-btns .shouye-btn .btn_2{
+    width:0.7rem;
+    height:0.68rem;
+    margin-bottom:0.38rem;
+}

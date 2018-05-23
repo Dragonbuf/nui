@@ -1,0 +1,34 @@
+body {
+  background-color: #fff;
+}
+.xieyi {
+  position: relative;
+}
+.xieyi .xieyi-buttons {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  padding: 0.4rem 0;
+}
+.xieyi .xieyi-buttons a {
+  display: block;
+  width: 3rem;
+  height: 0.90666667rem;
+  text-align: center;
+  line-height: 0.90666667rem;
+  border: 1px solid #2daaff;
+  border-radius: 0.12rem;
+  color: #2daaff;
+}
+.xieyi .xieyi-buttons a:nth-child(1) {
+  margin-left: 0.45333333rem;
+}
+.xieyi .xieyi-buttons a:nth-child(2) {
+  margin-right: 0.45333333rem;
+}
+.xieyi .xieyi-buttons a:focus {
+  color: #fff;
+  background-color: #2daaff;
+}
