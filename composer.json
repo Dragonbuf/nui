@@ -1,5 +1,5 @@
 {
-    "name": "nui/nui-yii",
+    "name": "Dragonbuf/nui",
     "description": "nui",
     "require": {
         "yiisoft/yii2-smarty": "*"
