@@ -32,30 +32,34 @@ class Nui extends ViewRenderer
         [
             'path' => '',
             'icon' => '',
-            'name' => '',
+            'name' => '一级目录',
             'child' => [
                 [
                     'path' => '',
                     'icon' => '',
-                    'name' => '',
+                    'name' => '二级目录',
                 ]
             ]
         ]
     ];
 
     public $admin = [
+        'id'=>1,
+        'email' =>'nui@nui.com',
         'avatar' => '',
         'name' => 'nui',
     ];
+
+    public $nuiDefaultName = 'nui';
 
     public function init()
     {
         parent::init();
 
 
-        $this->function_class = $this->function_class ? : '\nui\SmartyFunction';
-        $this->block_class = $this->block_class ? : '\nui\SmartyBlock';
-        $this->modifier_class = $this->modifier_class ? : '\nui\SmartyModifier';
+        $this->function_class = $this->function_class ? : '\nuiYii\SmartyFunction';
+        $this->block_class = $this->block_class ? : '\nuiYii\SmartyBlock';
+        $this->modifier_class = $this->modifier_class ? : '\nuiYii\SmartyModifier';
 
 
 
@@ -89,6 +93,8 @@ class Nui extends ViewRenderer
         $this->smarty->assign('sidebar',$this->menu);
 
         $this->smarty->assign('admin',$this->admin);
+
+        $this->smarty->assign('nuiDefaultName',$this->nuiDefaultName);
 
         $this->smarty->registerFilter('output', array($this, 'add_block'));
     }

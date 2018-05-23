@@ -13,7 +13,7 @@
                 </b>
                 <!-- Logo text image you can use text also -->
                 <span class="hidden-xs">
-                         南京金融资产交易中心
+                         %{$nuiDefaultName}
                     <!--This is dark logo text><img src="/res/plugins/images/admin-text.png" alt="home" class="dark-logo" /-->
                     <!--This is light logo text><img src="/res/plugins/images/admin-text-dark.png" alt="home" class="light-logo" /-->
                     </span>

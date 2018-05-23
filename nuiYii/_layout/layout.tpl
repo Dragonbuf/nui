@@ -16,7 +16,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="csrf-token" content="%{$csrf_token}">
-    <title>%{block name="html-title"}产品 - %{/block}管理中心 - 南京金融交易中心</title>
+    <title>%{block name="html-title"}产品 - %{/block}管理中心 - %{$nuiDefaultName}</title>
     %{include file="file:[nui]_layout/header-res.tpl"}
 </head>
 
@@ -72,7 +72,7 @@
                 <div class="col-md-12">
                     %{block name="main"}
                     <div class="white-box">
-                        <h3 class="box-title">测试页面</h3>
+                        <h3 class="box-title">测试页面 </h3>
                     </div>
 
                     %{/block}
@@ -81,7 +81,7 @@
             <!-- .row -->
         </div>
         <!-- /.container-fluid -->
-        <footer class="footer text-center"> %{$smarty.now|date_format:'%Y'} &copy; 南京金融资产交易中心 </footer>
+        <footer class="footer text-center"> %{$smarty.now|date_format:'%Y'} &copy; %{$nuiDefaultName} </footer>
     </div>
     <!-- /#page-wrapper -->
 </div>

@@ -24,7 +24,7 @@
 -------css-files--------
 <!-- Do not delete end -->
 
-%{assign var="min" value=".min"}
+
 
 <link href="/res/css/style.min.css" rel="stylesheet">
 <link href="/res/css/colors/default.css" id="theme" rel="stylesheet">
@@ -35,6 +35,6 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 <!-- jQuery -->
-<script src="/res/plugins/bower_components/jquery/dist/jquery%{$min}.js"></script>
+<script src="/res/plugins/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="/res/plugins/bower_components/bootstrap-table/dist/bootstrap-table.min.js"></script>
 <script src="/res/js/ajax-utils.js"></script>

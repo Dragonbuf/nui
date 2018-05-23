@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="csrf-token" content="%{$csrf_token}">
-    <title>管理中心 - 南京金融交易中心</title>
+    <title>管理中心 - %{$nuiDefaultName}</title>
     %{include file="file:[nui]_layout/header-res.tpl"}
 </head>
 
