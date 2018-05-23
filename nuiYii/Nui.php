@@ -105,11 +105,11 @@ class Nui extends ViewRenderer
     public function render_header_css($vars)
     {
         $html = "";
-        if ($vars['css'] && !is_array($vars['css'])) {
+        if (isset($vars['css']) && !is_array($vars['css'])) {
             $vars['css'] = [$vars['css']];
         }
 
-        if ($vars['css'] && is_array($vars['css'])) {
+        if (isset($vars['css']) && is_array($vars['css'])) {
             foreach ($vars['css'] as $item) {
                 $html .= '<link href="' . $item . '" rel="stylesheet">';
             }
@@ -122,11 +122,11 @@ class Nui extends ViewRenderer
     public function render_footer_js($vars)
     {
         $html = "";
-        if ($vars['js'] && !is_array($vars['js'])) {
+        if (isset($vars['js']) && !is_array($vars['js'])) {
             $vars['js'] = [$vars['js']];
         }
 
-        if ($vars['js'] && is_array($vars['js'])) {
+        if (isset($vars['js']) && is_array($vars['js'])) {
             foreach ($vars['js'] as $item) {
                 $html .= '<script src="' . $item . '"></s' . 'cript>';
             }
