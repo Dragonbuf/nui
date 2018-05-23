@@ -6,7 +6,7 @@
  * Time: 下午1:27
  */
 
-namespace nui\nuiYii;
+namespace nuiYii;
 
 
 use yii\smarty\ViewRenderer;
