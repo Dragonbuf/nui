@@ -1,8 +1,14 @@
 {
     "name": "dragonbuf/nui",
+    "minimum-stability": "stable",
     "description": "nui",
     "require": {
         "yiisoft/yii2-smarty": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "nui\\nui-yii": "Nui"
+        }
     },
     "authors": [
         {
