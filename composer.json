@@ -7,7 +7,7 @@
     },
     "autoload": {
         "psr-4": {
-            "nui\\nui-yii\\": "Nui"
+            "nui\\nuiYii\\": "Nui"
         }
     },
     "authors": [
