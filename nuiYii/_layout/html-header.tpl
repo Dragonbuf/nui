@@ -8,14 +8,14 @@
             <a class="logo"  href="/">
                 <!-- Logo icon image, you can use font-icon also -->
                 <b>
-                    <!--This is dark logo icon><img src="/res/plugins/images/admin-logo.png" alt="home" class="dark-logo" /-->
-                    <!--This is light logo icon><img src="/res/plugins/images/admin-logo-dark.png" alt="home" class="light-logo" /-->
+                    <!--This is dark logo icon><img src="/nuiRes/plugins/images/admin-logo.png" alt="home" class="dark-logo" /-->
+                    <!--This is light logo icon><img src="/nuiRes/plugins/images/admin-logo-dark.png" alt="home" class="light-logo" /-->
                 </b>
                 <!-- Logo text image you can use text also -->
                 <span class="hidden-xs">
                          %{$nuiDefaultName}
-                    <!--This is dark logo text><img src="/res/plugins/images/admin-text.png" alt="home" class="dark-logo" /-->
-                    <!--This is light logo text><img src="/res/plugins/images/admin-text-dark.png" alt="home" class="light-logo" /-->
+                    <!--This is dark logo text><img src="/nuiRes/plugins/images/admin-text.png" alt="home" class="dark-logo" /-->
+                    <!--This is light logo text><img src="/nuiRes/plugins/images/admin-text-dark.png" alt="home" class="light-logo" /-->
                     </span>
             </a>
         </div>
@@ -30,7 +30,7 @@
         <ul class="nav navbar-top-links navbar-right pull-right">
             <!-- /.Task dropdown -->
             <li class="dropdown">
-                <a target="_blank" href="http://doc.njfae.cn/view/url?url=https://mdc.njfae.cn/res/file/南金中心新系统帮助文档.docx"> 帮助文档 </a>
+
         </ul>
 
 
@@ -39,11 +39,11 @@
         <ul class="nav navbar-top-links navbar-right pull-right">
             <!-- /.Task dropdown -->
             <li class="dropdown">
-                <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="%{$admin.avatar}" onerror="this.src='/image/default_avatar.png'" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">%{$admin.name}</b><span class="caret"></span> </a>
+                <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="%{$admin.avatar}" onerror="this.src='/nuiImage/default_avatar.png'" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">%{$admin.name}</b><span class="caret"></span> </a>
                 <ul class="dropdown-menu dropdown-user">
                     <li>
                         <div class="dw-user-box">
-                            <div class="u-img"><img src="%{$admin.avatar}" alt="user" onerror="this.src='/image/default_avatar.png'" /></div>
+                            <div class="u-img"><img src="%{$admin.avatar}" alt="user" onerror="this.src='/nuiImage/default_avatar.png'" /></div>
                             <div class="u-text"><h4>%{$admin.name}</h4><p class="text-muted">%{$admin.email}</p><a href="/system/admin/info?id=%{$admin.id}" class="btn btn-rounded btn-danger btn-sm">个人资料</a></div>
                         </div>
                     </li>

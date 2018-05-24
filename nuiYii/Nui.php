@@ -44,10 +44,10 @@ class Nui extends ViewRenderer
     ];
 
     public $admin = [
-        'id'=>1,
-        'email' =>'nui@nui.com',
-        'avatar' => '',
+        'id' => 1,
+        'avatar' => '/a.png',
         'name' => 'nui',
+        'email' => 'nui@nui.com'
     ];
 
     public $nuiDefaultName = 'nui';
@@ -55,6 +55,30 @@ class Nui extends ViewRenderer
     public function init()
     {
         parent::init();
+
+
+        // todo ln -s
+        $destPath = \Yii::getAlias('@runtime').'/../web';
+        $localPath = dirname(__FILE__).'/_resource/';
+
+        $imagePath = $destPath.'/nuiImage';
+        if (!is_dir($imagePath)) {
+            shell_exec('ln -s '.$localPath.'nuiImage '.$destPath.'/nuiImage');
+        }
+        $resPath = $destPath.'/nuiRes';
+        if (!is_dir($resPath)) {
+            $result = shell_exec('ln -s '.$localPath.'nuiRes '.$destPath.'/nuiRes');
+        }
+
+        if (!is_dir($imagePath)) {
+            echo '自动执行失败，请手动执行 :  ln -s '.$localPath.'nuiImage '.$destPath.'/nuiImage <br>';
+            die;
+        }
+
+        if (!is_dir($resPath)) {
+            echo '自动执行失败，请手动执行 :  ln -s '.$localPath.'nuiRes '.$destPath.'/nuiRes <br>';
+            die;
+        }
 
 
         $this->function_class = $this->function_class ? : '\nuiYii\SmartyFunction';
@@ -88,7 +112,7 @@ class Nui extends ViewRenderer
         }
 
         $this->smarty->addTemplateDir(dirname(__FILE__),'nui');
-
+        
 
         $this->smarty->assign('sidebar',$this->menu);
 

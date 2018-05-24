@@ -6,7 +6,7 @@
             <h3><span class="fa-fw open-close"><i class="ti-close ti-menu"></i></span> <span class="hide-menu">菜单</span></h3> </div>
         <div class="user-profile">
             <div class="dropdown user-pro-body">
-                <div class="m-b-20 m-t-20"><img src="%{$admin.avatar}" alt="user-img" onerror="this.src='/image/default_avatar.png'" class="img-circle img-thumbnail"></div>
+                <div class="m-b-20 m-t-20"><img src="%{$admin.avatar}" alt="user-img" onerror="this.src='/nuiImage/default_avatar.png'" class="img-circle img-thumbnail"></div>
                 <span class="text-muted">%{$admin.name}</span>
             </div>
         </div>

@@ -10,32 +10,8 @@ return [
         'view' => [
             'renderers' => [
                 'tpl' => [
-                    'class' => 'nuiYii\Nui',
+                    'class' => '\nui\Nui',
                     //'cachePath' => '@runtime/Smarty/cache',
-                    'menu' => [
-                         [
-                            'path' => '',
-                            'icon' => '',
-                            'name' => '一级目录',
-                            'child' => [
-                                [
-                                    'path' => '',
-                                    'icon' => '',
-                                    'name' => '二级目录',
-                                ]
-                            ]
-                        ]
-                    ],
-                    'admin' => [
-                        'id'=>1,
-                        'email' =>'nui@nui.com',
-                        'avatar' => '',
-                        'name' => 'nui',
-                    ],
-                    'nuiDefaultName' => 'nui',
-                    'function_class' => '',
-                    'block_class' => '',
-                    'modifier_class' => ''
                 ],
             ],
         ],
