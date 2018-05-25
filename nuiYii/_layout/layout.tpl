@@ -81,8 +81,7 @@
             <!-- .row -->
         </div>
         <!-- /.container-fluid -->
-        <footer class="footer text-center"> %{$smarty.now|date_format:'%Y'} &copy; %{$nuiDefaultName} </footer>
-    </div>
+    </div>~
     <!-- /#page-wrapper -->
 </div>
 %{include file="file:[nui]_layout/footer-res.tpl"}
