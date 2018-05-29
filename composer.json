@@ -3,7 +3,7 @@
     "minimum-stability": "stable",
     "description": "nui",
     "require": {
-        "yiisoft/yii2-smarty": "*"
+        "yiisoft/yii2-smarty": "^2.0"
     },
     "autoload": {
         "psr-4": {
