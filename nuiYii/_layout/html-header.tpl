@@ -44,13 +44,13 @@
                     <li>
                         <div class="dw-user-box">
                             <div class="u-img"><img src="%{$admin.avatar}" alt="user" onerror="this.src='/nuiImage/default_avatar.png'" /></div>
-                            <div class="u-text"><h4>%{$admin.name}</h4><p class="text-muted">%{$admin.email}</p><a href="/system/admin/info?id=%{$admin.id}" class="btn btn-rounded btn-danger btn-sm">个人资料</a></div>
+                            <div class="u-text"><h4>%{$admin.name}</h4><p class="text-muted">%{$admin.email}</p><a href="%{$userInfo}" class="btn btn-rounded btn-danger btn-sm">个人资料</a></div>
                         </div>
                     </li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="#"><i class="ti-settings"></i> 账号设置</a></li>
+                    <li><a href="%{$setting}"><i class="ti-settings"></i> 账号设置</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="/login/logout"><i class="fa fa-power-off"></i> 退出登录</a></li>
+                    <li><a href="%{$logout}"><i class="fa fa-power-off"></i> 退出登录</a></li>
                 </ul>
                 <!-- /.dropdown-user -->
             </li>

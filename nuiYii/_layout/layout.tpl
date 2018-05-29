@@ -81,7 +81,8 @@
             <!-- .row -->
         </div>
         <!-- /.container-fluid -->
-    </div>~
+
+    </div>
     <!-- /#page-wrapper -->
 </div>
 %{include file="file:[nui]_layout/footer-res.tpl"}

@@ -52,6 +52,12 @@ class Nui extends ViewRenderer
 
     public $nuiDefaultName = 'nui';
 
+    public $userInfo = '';
+
+    public $setting = '';
+
+    public $logout = '';
+
     public function init()
     {
         parent::init();
@@ -119,6 +125,10 @@ class Nui extends ViewRenderer
         $this->smarty->assign('admin',$this->admin);
 
         $this->smarty->assign('nuiDefaultName',$this->nuiDefaultName);
+
+        $this->smarty->assign('userInfo',$this->userInfo);
+        $this->smarty->assign('setting',$this->setting);
+        $this->smarty->assign('logout',$this->logout);
 
         $this->smarty->registerFilter('output', array($this, 'add_block'));
     }

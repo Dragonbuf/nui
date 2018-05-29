@@ -407,7 +407,7 @@ class SmartyBlock
         if (!$content) return ;
         $class = ['panel-heading'];
         $attr = [];
-        if ($params['class']) $class[] = $params['class'];
+        if (isset($params['class']) && $params['class']) $class[] = $params['class'];
         if ($class) $attr['class'] = implode(' ', $class);
         $html = self::tag_html('div', $attr).$content;
 
@@ -431,7 +431,7 @@ class SmartyBlock
         if (!$content) return ;
         $class = ['panel-wrapper collapse in'];
         $attr = [];
-        if ($params['class']) $class[] = $params['class'];
+        if (isset($params['class']) && $params['class']) $class[] = $params['class'];
         if ($class) $attr['class'] = implode(' ', $class);
         $html = self::tag_html('div', $attr);
         $html .= SmartyBlock::tag_html('div', ['class' => 'panel-body']) .$content. '</div>';
@@ -444,7 +444,7 @@ class SmartyBlock
         if (!$content) return ;
         $class = ['panel-footer'];
         $attr = [];
-        if ($params['class']) $class[] = $params['class'];
+        if (isset($params['class']) && $params['class']) $class[] = $params['class'];
         if ($class) $attr['class'] = implode(' ', $class);
         $html = self::tag_html('div', $attr);
         $html .= $content;
@@ -458,11 +458,11 @@ class SmartyBlock
 
         $class = [];
         $attr = [];
-        if ($params['class']) $class[] = $params['class'];
-        if ($params['theme']) $class[] = self::get_option_style($params['theme']);
+        if (isset($params['class']) && $params['class']) $class[] = $params['class'];
+        if (isset($params['theme']) && $params['theme']) $class[] = self::get_option_style($params['theme']);
         if ($class) $attr['class'] = implode(' ', $class);
-        if ($params['name']) $attr['name'] = $params['name'];
-        if ($params['id']) $attr['id'] = $params['id'];
+        if (isset($params['name'])) $attr['name'] = $params['name'];
+        if (isset($params['id'])) $attr['id'] = $params['id'];
         $html = self::tag_html('div', $attr);
         $html .= $content;
         $html .= '</div>';
@@ -474,11 +474,11 @@ class SmartyBlock
         if (!$content) return ;
         $class = ['nav  nav-tabs'];
         $attr = [];
-        if ($params['class']) $class[] = $params['class'];
-        if ($params['theme']) $class[] = self::get_tab_style($params['theme']);
+        if (isset($params['class'])) $class[] = $params['class'];
+        if (isset($params['theme'])) $class[] = self::get_tab_style($params['theme']);
         if ($class) $attr['class'] = implode(' ', $class);
-        if ($params['name']) $attr['name'] = $params['name'];
-        if ($params['id']) $attr['id'] = $params['id'];
+        if (isset($params['name'])) $attr['name'] = $params['name'];
+        if (isset($params['id'])) $attr['id'] = $params['id'];
         $html = self::tag_html('ul', $attr);
         $html .= $content;
         $html .= '</ul>';
@@ -490,10 +490,10 @@ class SmartyBlock
         if (!$content) return ;
         $class = ['tab-content'];
         $attr = [];
-        if ($params['class']) $class[] = $params['class'];
+        if (isset($params['class'])) $class[] = $params['class'];
         if ($class) $attr['class'] = implode(' ', $class);
-        if ($params['name']) $attr['name'] = $params['name'];
-        if ($params['id']) $attr['id'] = $params['id'];
+        if (isset($params['name'])) $attr['name'] = $params['name'];
+        if (isset($params['id'])) $attr['id'] = $params['id'];
         $html = self::tag_html('ul', $attr);
         $html .= $content;
         $html .= '</ul>';
@@ -525,7 +525,7 @@ class SmartyBlock
         $input_group_html .= '</div>';
 
         $help_html = '<div class="help-block with-errors"></div>';
-        if ($params['help']) $help_html .= '<div class="help-block">' . $params['help'] . '</div>';
+        if (isset($params['help'])) $help_html .= '<div class="help-block">' . $params['help'] . '</div>';
 
         $wrap_html = SmartyBlock::layout($input_group_html, $help_html);
 
