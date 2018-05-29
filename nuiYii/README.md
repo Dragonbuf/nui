@@ -10,11 +10,16 @@ return [
         'view' => [
             'renderers' => [
                 'tpl' => [
-                    'class' => '\nui\Nui',
+                    'class' => 'nuiYii\Nui',
                     //'cachePath' => '@runtime/Smarty/cache',
+                    'options' => [
+                        "left_delimiter" => "%{",
+                        'caching' => false,
+                        'compile_check' => true,
+                    ],
+                    'nuiDefaultName' => '和签',
                 ],
             ],
-        ],
     ],
 ];
 ```
