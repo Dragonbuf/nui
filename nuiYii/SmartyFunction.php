@@ -54,7 +54,7 @@ class SmartyFunction
             $attr['type'] = 'text';
         }
         if ($params['type'] == 'currency') {
-            $js = "/res/plugins/bower_components/auto-numeric/";
+            $js = "/nuiRes/plugins/bower_components/auto-numeric/";
             if (YII_DEBUG) {
                 $js .= "autoNumeric.js";
             } else {
@@ -252,12 +252,12 @@ class SmartyFunction
         }
 
         if (YII_DEBUG) {
-            $jses = ["/res/plugins/bootstrap-duallistbox/jquery.bootstrap-duallistbox.min.js", "/res/plugins/select2/js/select2.full.js", "/res/plugins/bower_components/bootstrap-select/bootstrap-select.min.js"];
-            $csses = ["/res/plugins/bootstrap-duallistbox/bootstrap-duallistbox.min.css", "/res/plugins/select2/css/select2.css", "/res/plugins/bower_components/bootstrap-select/bootstrap-select.min.css"];
+            $jses = ["/nuiRes/plugins/bootstrap-duallistbox/jquery.bootstrap-duallistbox.min.js", "/nuiRes/plugins/select2/js/select2.full.js", "/nuiRes/plugins/bower_components/bootstrap-select/bootstrap-select.min.js"];
+            $csses = ["/nuiRes/plugins/bootstrap-duallistbox/bootstrap-duallistbox.min.css", "/nuiRes/plugins/select2/css/select2.css", "/nuiRes/plugins/bower_components/bootstrap-select/bootstrap-select.min.css"];
         } else {
 
-            $jses = ["/res/plugins/bootstrap-duallistbox/jquery.bootstrap-duallistbox.min.js", "/res/plugins/select2/js/select2.full.min.js", "/res/plugins/bower_components/bootstrap-select/bootstrap-select.min.js"];
-            $csses = ["/res/plugins/bootstrap-duallistbox/bootstrap-duallistbox.min.css", "/res/plugins/select2/css/select2.min.css", "/res/plugins/bower_components/bootstrap-select/bootstrap-select.min.css"];
+            $jses = ["/nuiRes/plugins/bootstrap-duallistbox/jquery.bootstrap-duallistbox.min.js", "/nuiRes/plugins/select2/js/select2.full.min.js", "/nuiRes/plugins/bower_components/bootstrap-select/bootstrap-select.min.js"];
+            $csses = ["/nuiRes/plugins/bootstrap-duallistbox/bootstrap-duallistbox.min.css", "/nuiRes/plugins/select2/css/select2.min.css", "/nuiRes/plugins/bower_components/bootstrap-select/bootstrap-select.min.css"];
         }
 
         $addition_html = '';
@@ -480,13 +480,13 @@ class SmartyFunction
     public static function date($params, $smarty)
     {
         if (YII_DEBUG) {
-            self::append("js", "/res/plugins/bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js");
-            self::append("css", "/res/plugins/bower_components/bootstrap-datepicker/css/bootstrap-datepicker.css");
+            self::append("js", "/nuiRes/plugins/bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js");
+            self::append("css", "/nuiRes/plugins/bower_components/bootstrap-datepicker/css/bootstrap-datepicker.css");
         } else {
-            self::append("js", "/res/plugins/bower_components/bootstrap-datepicker/js/bootstrap-datepicker.min.js");
-            self::append("css", "/res/plugins/bower_components/bootstrap-datepicker/css/bootstrap-datepicker.min.css");
+            self::append("js", "/nuiRes/plugins/bower_components/bootstrap-datepicker/js/bootstrap-datepicker.min.js");
+            self::append("css", "/nuiRes/plugins/bower_components/bootstrap-datepicker/css/bootstrap-datepicker.min.css");
         }
-        self::append("js", "/res/plugins/bower_components/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js");
+        self::append("js", "/nuiRes/plugins/bower_components/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js");
 
         $attr = [];
         $attr['id'] = $params['id'] ?: $params['name'];
@@ -574,13 +574,13 @@ class SmartyFunction
 
     public static function daterange($params, $smarty)
     {
-        self::append("js", "/res/plugins/bower_components/moment/moment.js");
+        self::append("js", "/nuiRes/plugins/bower_components/moment/moment.js");
         if (YII_DEBUG) {
-            self::append("css", "/res/plugins/bower_components/bootstrap-daterangepicker/daterangepicker.css");
-            self::append("js", "/res/plugins/bower_components/bootstrap-daterangepicker/daterangepicker.js");
+            self::append("css", "/nuiRes/plugins/bower_components/bootstrap-daterangepicker/daterangepicker.css");
+            self::append("js", "/nuiRes/plugins/bower_components/bootstrap-daterangepicker/daterangepicker.js");
         } else {
-            self::append("css", "/res/plugins/bower_components/bootstrap-daterangepicker/daterangepicker.min.css");
-            self::append("js", "/res/plugins/bower_components/bootstrap-daterangepicker/daterangepicker.min.js");
+            self::append("css", "/nuiRes/plugins/bower_components/bootstrap-daterangepicker/daterangepicker.min.css");
+            self::append("js", "/nuiRes/plugins/bower_components/bootstrap-daterangepicker/daterangepicker.min.js");
         }
 
         $attr = [];
@@ -647,8 +647,8 @@ class SmartyFunction
      */
     public static function time($params, $smarty)
     {
-        self::append("js", "/res/plugins/bower_components/clockpicker/dist/jquery-clockpicker.min.js");
-        self::append("css", "/res/plugins/bower_components/clockpicker/dist/jquery-clockpicker.min.css");
+        self::append("js", "/nuiRes/plugins/bower_components/clockpicker/dist/jquery-clockpicker.min.js");
+        self::append("css", "/nuiRes/plugins/bower_components/clockpicker/dist/jquery-clockpicker.min.css");
         $attr = [];
         $attr['id'] = $params['id'] ?: $params['name'];
         $input_id = $attr['id'];
@@ -704,10 +704,10 @@ class SmartyFunction
     public static function color($params, $smarty)
     {
 
-        self::append("js", "/res/plugins/bower_components/jquery-asColorPicker-master/libs/jquery-asColor.js");
-        self::append("js", "/res/plugins/bower_components/jquery-asColorPicker-master/libs/jquery-asGradient.js");
-        self::append("js", "/res/plugins/bower_components/jquery-asColorPicker-master/dist/jquery-asColorPicker.min.js");
-        self::append("css", "/res/plugins/bower_components/jquery-asColorPicker-master/css/asColorPicker.css");
+        self::append("js", "/nuiRes/plugins/bower_components/jquery-asColorPicker-master/libs/jquery-asColor.js");
+        self::append("js", "/nuiRes/plugins/bower_components/jquery-asColorPicker-master/libs/jquery-asGradient.js");
+        self::append("js", "/nuiRes/plugins/bower_components/jquery-asColorPicker-master/dist/jquery-asColorPicker.min.js");
+        self::append("css", "/nuiRes/plugins/bower_components/jquery-asColorPicker-master/css/asColorPicker.css");
 
         $attr = [];
         $attr['id'] = $params['id'] ?: $params['name'];
@@ -760,7 +760,7 @@ class SmartyFunction
      */
     public static function file($params, $smarty)
     {
-        self::append("js", "/res/js/jasny-bootstrap.js");
+        self::append("js", "/nuiRes/js/jasny-bootstrap.js");
 
         $attr = [];
         $attr['id'] = $params['id'] ?: $params['name'];
@@ -827,7 +827,7 @@ class SmartyFunction
      */
     public static function ossfile($params, $smarty)
     {
-        self::append("js", "/res/js/jasny-bootstrap.js");
+        self::append("js", "/nuiRes/js/jasny-bootstrap.js");
 
         $attr = [];
         $attr['id'] = $params['id'] ?: $params['name'];
@@ -913,11 +913,11 @@ class SmartyFunction
     {
 
         if (YII_DEBUG) {
-            self::append("css", "/res/plugins/bower_components/dropzone-master/dist/dropzone.css");
-            self::append("js", "/res/plugins/bower_components/dropzone-master/dist/dropzone.js");
+            self::append("css", "/nuiRes/plugins/bower_components/dropzone-master/dist/dropzone.css");
+            self::append("js", "/nuiRes/plugins/bower_components/dropzone-master/dist/dropzone.js");
         } else {
-            self::append("css", "/res/plugins/bower_components/dropzone-master/dist/min/dropzone.min.css");
-            self::append("js", "/res/plugins/bower_components/dropzone-master/dist/min/dropzone.min.js");
+            self::append("css", "/nuiRes/plugins/bower_components/dropzone-master/dist/min/dropzone.min.css");
+            self::append("js", "/nuiRes/plugins/bower_components/dropzone-master/dist/min/dropzone.min.js");
         }
 
         $attr = [];
@@ -977,8 +977,8 @@ class SmartyFunction
 
     public static function switcher($params, $smarty)
     {
-        self::append("css", "/res/plugins/bower_components/switchery/dist/switchery.min.css");
-        self::append("js", "/res/plugins/bower_components/switchery/dist/switchery.min.js");
+        self::append("css", "/nuiRes/plugins/bower_components/switchery/dist/switchery.min.css");
+        self::append("js", "/nuiRes/plugins/bower_components/switchery/dist/switchery.min.js");
         $attr = [];
         if ($params['name']) $attr['name'] = $params['name'];
         $attr['id'] = $params['id'] ?: $params['name'];
