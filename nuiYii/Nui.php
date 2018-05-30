@@ -45,7 +45,7 @@ class Nui extends ViewRenderer
 
     public $admin = [
         'id' => 1,
-        'avatar' => '/a.png',
+        'avatar' => '/nuiImage/default_avatar.png',
         'name' => 'nui',
         'email' => 'nui@nui.com'
     ];
