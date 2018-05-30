@@ -17,7 +17,7 @@ return [
                         'caching' => false,
                         'compile_check' => true,
                     ],
-                    'nuiDefaultName' => '和签',
+                    'nuiDefaultName' => 'nui',
                 ],
             ],
     ],
