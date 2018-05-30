@@ -53,7 +53,7 @@ class SmartyFunction
         } else {
             $attr['type'] = 'text';
         }
-        if ($params['type'] == 'currency') {
+        if (isset($params['type']) && $params['type'] == 'currency') {
             $js = "/nuiRes/plugins/bower_components/auto-numeric/";
             if (YII_DEBUG) {
                 $js .= "autoNumeric.js";
@@ -64,13 +64,13 @@ class SmartyFunction
             $class[] = 'currency';
         }
         $attr['class'] = implode(' ', $class);
-        if ($params['password'] == '1' || strtolower($params['password']) == 'on') $attr['type'] = 'password';
-        if ($params['readonly'] == '1' || strtolower($params['readonly']) == 'on') $attr['readonly'] = 'readonly';
-        if ($params['disabled'] == '1' || strtolower($params['disabled']) == 'on') $attr['disabled'] = 'disabled';
-        if ($params['autofocus'] == '1' || strtolower($params['autofocus']) == 'on') $attr['autofocus'] = 'on';
-        if ($params['autocomplete'] == '1' || strtolower($params['autocomplete']) == 'on') $attr['autocomplete'] = 'on';
-        if ($params['remote']) $attr['data-remote'] = $params['remote'];
-        if ($params['match']) $attr['data-match'] = $params['match'];
+        if (isset($params['password']) && ($params['password'] == '1' || strtolower($params['password']) == 'on')) $attr['type'] = 'password';
+        if (isset($params['readonly']) &&($params['readonly'] == '1' || strtolower($params['readonly']) == 'on')) $attr['readonly'] = 'readonly';
+        if (isset($params['disabled']) &&($params['disabled'] == '1' || strtolower($params['disabled']) == 'on')) $attr['disabled'] = 'disabled';
+        if (isset($params['autofocus']) &&($params['autofocus'] == '1' || strtolower($params['autofocus']) == 'on')) $attr['autofocus'] = 'on';
+        if (isset($params['autocomplete']) &&($params['autocomplete'] == '1' || strtolower($params['autocomplete']) == 'on')) $attr['autocomplete'] = 'on';
+        if (isset($params['remote']) &&($params['remote'])) $attr['data-remote'] = $params['remote'];
+        if (isset($params['match']) &&($params['match'])) $attr['data-match'] = $params['match'];
 
         $input_html = SmartyBlock::tag_html('input', $attr);
 
@@ -93,8 +93,8 @@ class SmartyFunction
         if (isset($params['btn-left'])) {
             $btn_id = $input_id . "-btn-left";
             $btn_class = '';
-            if ($params['btn-left-id']) $btn_id = $params['btn-left-id'];
-            if ($params['btn-left-class']) $btn_class = $params['btn-left-class'];
+            if (isset($params['btn-left-id'])) $btn_id = $params['btn-left-id'];
+            if (isset($params['btn-left-class'])) $btn_class = $params['btn-left-class'];
 
             $input_group_html .= '<span class="input-group-btn"><button type="button" class="btn waves-effect waves-light ' . $btn_class . '" id="' . $btn_id . '">' . $params['btn-left'] . '</button></span>';
         }
@@ -142,7 +142,7 @@ class SmartyFunction
     public static function textarea($params, $smarty)
     {
         $attr = [];
-        $attr['id'] = $params['id'] ?: $params['name'];
+        $attr['id'] = isset($params['id']) ? $params['id'] : $params['name'];
         $input_id = $attr['id'];
         if (isset($params['name'])) $attr['name'] = $params['name'];
         if (isset($params['rows'])) $attr['rows'] = $params['rows'];
@@ -151,7 +151,7 @@ class SmartyFunction
 
         $value = "";
         if (isset($params['value'])) $value = $params['value'];
-        if (isset($params['name']) && $_POST[$params['name']]) $value = $_POST[$params['name']];
+        if (isset($params['name']) && isset($_POST[$params['name']])) $value = $_POST[$params['name']];
 
         $class = ['form-control'];
         if (isset($params['class'])) $class[] = $params['class'];
@@ -176,6 +176,7 @@ class SmartyFunction
         $html .= $wrap_html;
         $html .= '</div>';
 
+        $params['id'] = isset($params['id']) ? $params['id'] : '';
         if (isset($params['name'])) SmartyBlock::add_field($params['name'], $params['id']);
 
         return $html;
@@ -195,7 +196,7 @@ class SmartyFunction
         if (isset($params['value'])) {
             $value = is_array($params['value']) ? $params['value'] : explode(',', $params['value']);
         }
-        if ($params['name'] && $_POST[$params['name']]) {
+        if (isset($params['name']) && isset($_POST[$params['name']])) {
             $value = is_array($_POST[$params['name']]) ? $_POST[$params['name']] : explode(',', $_POST[$params['name']]);
         }
 
@@ -203,11 +204,12 @@ class SmartyFunction
         $attr['class'] = implode(' ', $class);
 
         $checkboxClass = ['checkbox'];
-        if ($params['class']) $checkboxClass[] = $params['class'];
+        if (isset($params['class'])) $checkboxClass[] = $params['class'];
 
         $attr2 = [];
         $attr2['class'] = implode(' ', $checkboxClass);
         $input_html = "";
+
         foreach ($params['data'] as $key => $label) {
             $attr3 = ['type' => 'checkbox', 'value' => $key, 'name' => $name . '[]', "id" => $name . $key];
             if (in_array($key, $value)) {
@@ -223,7 +225,7 @@ class SmartyFunction
         $label_html = SmartyBlock::tag_html('label', $attr) . $params['label'] . '</label>';
 
         $help_html = '<div class="help-block with-errors"></div>';
-        if ($params['help']) $help_html .= '<div class="help-block">' . $params['help'] . '</div>';
+        if (isset($params['help'])) $help_html .= '<div class="help-block">' . $params['help'] . '</div>';
 
         $wrap_html = SmartyBlock::layout($input_html, $help_html);
 
@@ -232,7 +234,7 @@ class SmartyFunction
         $html .= $wrap_html;
         $html .= '</div>';
 
-        if ($params['name']) SmartyBlock::add_field($params['name'], $params['id']);
+        if (isset($params['name'])) SmartyBlock::add_field($params['name'], $params['id']);
 
         return $html;
     }
@@ -263,11 +265,15 @@ class SmartyFunction
         $addition_html = '';
 
         $attr = [];
-        $attr['id'] = $params['id'] ?: $params['name'];
+        $attr['id'] = isset($params['id']) ? $params['id']: $params['name'];
 
-        if ($params['name']) $attr['name'] = $params['name'];
+        if (isset($params['name'])) $attr['name'] = $params['name'];
 
-        $style = intval($params['style']);
+        $style = 2;
+        if (isset($params['style'])) {
+            $style = intval($params['style']);
+        }
+
         if (!in_array($style, array(1, 2, 3))) $style = 2;
 
         self::append("js", $jses[$style - 1]);
@@ -284,7 +290,7 @@ class SmartyFunction
             if (isset($params['value'])) {
                 $value = is_array($params['value']) ? $params['value'] : explode(',', $params['value']);
             }
-            if ($params['name'] && $_POST[$params['name']]) {
+            if (isset($params['name']) && $_POST[$params['name']]) {
                 $value = is_array($_POST[$params['name']]) ? $_POST[$params['name']] : explode(',', $_POST[$params['name']]);
             }
 
@@ -309,7 +315,7 @@ class SmartyFunction
             };
         } else {
             $class[] = "form-control";
-            if ($params['value']) {
+            if (isset($params['value'])) {
                 $js = '<script>$("#' . $attr['id'] . '").val("' . addslashes($params['value']) . '");</script>';
             };
         }
@@ -318,9 +324,10 @@ class SmartyFunction
 
         $select_html = SmartyBlock::tag_html('select', $attr);
 
-        $map_group = $params['map-group'] ?: "";
-        $map_key = $params['map-key'] ?: "key";
-        $map_value = $params['map-value'] ?: "value";
+        $map_group = isset($params['map-group']) ? $params['map-group']: "";
+        $map_key = isset($params['map-key']) ? $params['map-key']: "key";
+        $map_value = isset($params['map-value']) ? $params['map-value'] : "value";
+
         $data = (array)$params['data'];
         $map = [];
         if ($map_group) {
@@ -356,7 +363,7 @@ class SmartyFunction
         }
 
         $help_html = '<div class="help-block with-errors"></div>';
-        if ($params['help']) $help_html .= '<div class="help-block">' . $params['help'] . '</div>';
+        if (isset($params['help'])) $help_html .= '<div class="help-block">' . $params['help'] . '</div>';
         $wrap_html = SmartyBlock::layout($select_html, $help_html);
 
         $html = '<div class="form-group">';
@@ -364,7 +371,7 @@ class SmartyFunction
         $html .= $wrap_html;
         $html .= '</div>' . $js;
 
-        if ($params['id'] ?: $params['name']) SmartyBlock::add_field($params['name'], $params['id']);
+        if (isset($params['id']) ?$params['id'] : $params['name']) SmartyBlock::add_field($params['name'], $params['id']);
 
         return $html;
     }
@@ -393,14 +400,14 @@ class SmartyFunction
         $html = '';
 
         $attr = [];
-        $id = $params['id'] ?: $params['name'];
-        $input_id = $attr['id'];
+        $id = isset($params['id']) ? $params['id'] : $params['name'];
+        $input_id = isset($attr['id']) ? $attr['id'] : '';
         $name = "";
-        if ($params['name']) $name = $params['name'];
+        if (isset($params['name'])) $name = $params['name'];
 
         $value = '';
         if (isset($params['value'])) $value = $params['value'];
-        if ($params['name'] && $_POST[$params['name']]) $value = $_POST[$params['name']];
+        if (isset($params['name']) && isset($_POST[$params['name']])) $value = $_POST[$params['name']];
 
         $class = ['form-control'];
         $attr['class'] = implode(' ', $class);
@@ -428,7 +435,7 @@ class SmartyFunction
         $label_html = SmartyBlock::tag_html('label', $attr) . $params['label'] . '</label>';
 
         $help_html = '<div class="help-block with-errors"></div>';
-        if ($params['help']) $help_html .= '<div class="help-block">' . $params['help'] . '</div>';
+        if (isset($params['help'])) $help_html .= '<div class="help-block">' . $params['help'] . '</div>';
 
         $wrap_html = SmartyBlock::layout($input_html, $help_html);
 
@@ -437,7 +444,7 @@ class SmartyFunction
         $html .= $wrap_html;
         $html .= '</div>';
 
-        if ($params['id'] ?: $params['name']) SmartyBlock::add_field($params['name'], $params['id']);
+        if (isset($params['id']) ? $params['id'] : $params['name']) SmartyBlock::add_field($params['name'], $params['id']);
 
         return $html;
     }
@@ -447,25 +454,25 @@ class SmartyFunction
         $html = '';
 
         $attr = [];
-        $attr['id'] = $params['id'] ?: $params['name'];
+        $attr['id'] = isset($params['id']) ? $params['id'] : $params['name'];
         $input_id = $attr['id'];
-        if ($params['name']) $attr['name'] = $params['name'];
+        if (isset($params['name'])) $attr['name'] = $params['name'];
 
         $value = "";
-        if ($params['value'])
+        if (isset($params['value']))
             $value = $params['value'];
         else {
             $value = $input_id;
         }
 
         $isdropdown = false;
-        if ($params['dropdown'] == '1' || strtolower($params['dropdown']) == 'on') $isdropdown = true;
+        if (isset($params['dropdown']) && ( $params['dropdown'] == '1' || strtolower($params['dropdown'])) == 'on') $isdropdown = true;
         $class = ['btn'];
         if ($isdropdown) {
             $class[] = "dropdown-toggle";
             $attr['data-toggle'] = "dropdown";
         }
-        if ($params['class']) $class[] = $params['class'];
+        if (isset($params['class'])) $class[] = $params['class'];
         $attr['class'] = implode(' ', $class);
 
         $attr['type'] = $params['type'] ? $params['type'] : "button";
@@ -494,7 +501,7 @@ class SmartyFunction
         if (isset($params['name'])) $attr['name'] = $params['name'];
 
         if (isset($params['value'])) $attr['value'] = $params['value'];
-        if (isset($params['name']) && $_POST[$params['name']]) $attr['value'] = $_POST[$params['name']];
+        if (isset($params['name']) && isset($_POST[$params['name']])) $attr['value'] = $_POST[$params['name']];
 
         $class = ['form-control'];
         if (isset($params['class'])) $class[] = $params['class'];
@@ -504,7 +511,7 @@ class SmartyFunction
         $attr['type'] = 'text';
         $attr['readonly'] = 'readonly';
 
-        $format = ($params['format']) ? $params['format'] : 'yyyy-mm-dd';
+        $format = (isset($params['format'])) ? $params['format'] : 'yyyy-mm-dd';
         if ($format) {
             $attr['data-format'] = $format;
         }
@@ -525,7 +532,7 @@ class SmartyFunction
         $input_group_html .= '</div>';
 
         $help_html = '<div class="help-block with-errors"></div>';
-        if ($params['help']) $help_html .= '<div class="help-block">' . $params['help'] . '</div>';
+        if (isset($params['help'])) $help_html .= '<div class="help-block">' . $params['help'] . '</div>';
 
         $wrap_html = SmartyBlock::layout($input_group_html, $help_html);
 
@@ -534,6 +541,7 @@ class SmartyFunction
         $html .= $wrap_html;
         $html .= '</div>';
 
+        $params['id'] = isset($params['id']) ? $params['id']  : '';
         if ($params['id'] ?: $params['name']) SmartyBlock::add_field($params['name'], $params['id']);
 
         return $html;
@@ -774,15 +782,15 @@ class SmartyFunction
         if (isset($params['placeholder'])) $attr['placeholder'] = $params['placeholder'];
         $attr['type'] = 'file';
 
-        if ($params['readonly'] == 1 || $params['readonly'] == 'on') {
+        if (isset($params['readonly']) && ($params['readonly'] == 1 || $params['readonly'] == 'on')) {
             $attr['readonly'] = 'readonly';
         }
 
-        if ($params['disabled'] == 1 || $params['disabled'] == 'on') {
+        if (isset($params['disabled']) && ( $params['disabled'] == 1 || $params['disabled'] == 'on')) {
             $attr['disabled'] = 'disabled';
         }
 
-        if ($params['extensions']) {
+        if (isset($params['extensions'])) {
             $attr['data-extensions'] = $params['extensions'];
         }
         $attr['data-file'] = 'file';
@@ -844,11 +852,11 @@ class SmartyFunction
         if (isset($params['placeholder'])) $attr['placeholder'] = $params['placeholder'];
         $attr['type'] = 'file';
 
-        if ($params['readonly'] == 1 || $params['readonly'] == 'on') {
+        if (isset($params['readonly']) && ($params['readonly'] == 1 || $params['readonly'] == 'on')) {
             $attr['readonly'] = 'readonly';
         }
 
-        if ($params['disabled'] == 1 || $params['disabled'] == 'on') {
+        if (isset($params['disabled']) && ($params['disabled'] == 1 || $params['disabled'] == 'on')) {
             $attr['disabled'] = 'disabled';
         }
 
@@ -898,7 +906,7 @@ class SmartyFunction
         $html .= $wrap_html;
         $html .= '</div>';
 
-        if ($params['id'] ?: $params['name']) SmartyBlock::add_field($params['name'], $params['id']);
+        if (isset($params['id']) ? $params['id']: $params['name']) SmartyBlock::add_field($params['name'], $params['id']);
 
         return $html;
     }
@@ -921,11 +929,11 @@ class SmartyFunction
         }
 
         $attr = [];
-        if ($params['name']) $attr['name'] = $params['name'];
+        if (isset($params['name'])) $attr['name'] = $params['name'];
 
         $attr['type'] = 'file';
         $attr['multiple'] = 'multiple';
-        if ($params['ossserver']) {
+        if (isset($params['ossserver'])) {
             $attr['data-dropzone'] = 'oss';
         }
 
@@ -935,7 +943,7 @@ class SmartyFunction
         $attr['class'] = SmartyBlock::get_label_class() . ' control-label';
         $label_html = $params['label'] ? SmartyBlock::tag_html('label', $attr) . $params['label'] . '</label>' : '';
 
-        $id = $params['id'];
+        $id = isset($params['id']) ? $params['id'] : null;
 
         $class = ['input-group', 'fallback'];
         $input_group_html = SmartyBlock::tag_html('div', ['class' => implode(' ', $class)]) . $input_html . '</div>';
@@ -970,7 +978,7 @@ class SmartyFunction
         $html .= $wrap_html;
         $html .= '</div>';
 
-        if ($params['id'] ?: $params['name'] && !$params['ossserver']) SmartyBlock::add_field($params['name'], $params['id']);
+        if (isset($params['id']) ? $params['id']: $params['name'] && !$params['ossserver']) SmartyBlock::add_field($params['name'], $params['id']);
 
         return $html;
     }
@@ -980,27 +988,27 @@ class SmartyFunction
         self::append("css", "/nuiRes/plugins/bower_components/switchery/dist/switchery.min.css");
         self::append("js", "/nuiRes/plugins/bower_components/switchery/dist/switchery.min.js");
         $attr = [];
-        if ($params['name']) $attr['name'] = $params['name'];
+        if (isset($params['name'])) $attr['name'] = $params['name'];
         $attr['id'] = $params['id'] ?: $params['name'];
 
         $class = ['form-control'];
         $attr['class'] = implode(' ', $class);
 
         $checkboxClass = ['js-switch'];
-        if ($params['class']) $checkboxClass[] = $params['class'];
+        if (isset($params['class'])) $checkboxClass[] = $params['class'];
 
         $attr['class'] = implode(' ', $checkboxClass);
         $attr['type'] = 'checkbox';
         if (\Yii::$app->request->isPost) {
-            if ($params['name'] && $_POST[$params['name']]) {
+            if (isset($params['name']) && isset($_POST[$params['name']])) {
                 $attr['checked'] = 'checked';
             }
-        } elseif ($params['value'] && ($params['value'] == 1 || strtolower($params['value']) == 'on')) {
+        } elseif (isset($params['value']) && ($params['value'] == 1 || strtolower($params['value']) == 'on')) {
             $attr['checked'] = 'checked';
             $attr['value'] = '1';
         }
-        if ($params['readonly'] == '1' || strtolower($params['readonly']) == 'on') $attr['readonly'] = 'readonly';
-        if ($params['disabled'] == '1' || strtolower($params['disabled']) == 'on') $attr['disabled'] = 'disabled';
+        if (isset($params['readonly']) && ($params['readonly'] == '1' || strtolower($params['readonly']) == 'on')) $attr['readonly'] = 'readonly';
+        if (isset($params['disabled']) && ($params['disabled'] == '1' || strtolower($params['disabled']) == 'on')) $attr['disabled'] = 'disabled';
         $attr['data-color'] = self::get_option_color($params['color']);
         $input_html = SmartyBlock::tag_html('input', $attr);
         $labelattr = [];
@@ -1008,7 +1016,7 @@ class SmartyFunction
         $label_html = SmartyBlock::tag_html('label', $labelattr) . $params['label'] . '</label>';
 
         $help_html = '<div class="help-block with-errors"></div>';
-        if ($params['help']) $help_html .= '<div class="help-block">' . $params['help'] . '</div>';
+        if (isset($params['help'])) $help_html .= '<div class="help-block">' . $params['help'] . '</div>';
 
         $wrap_html = SmartyBlock::layout($input_html, $help_html);
 
