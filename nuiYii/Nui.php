@@ -118,7 +118,17 @@ class Nui extends ViewRenderer
         }
 
         $this->smarty->addTemplateDir(dirname(__FILE__),'nui');
-        
+
+
+        $params['is_login'] = !\Yii::$app->user->isGuest;
+        //$params['admin'] = \Yii::$app->user->getIdentity();
+        $params['csrf_token'] = \Yii::$app->request->getCsrfToken();
+        $params['IS_DEBUG'] = YII_DEBUG;
+        $params['success'] = $this->getFlash('success');
+        $params['error'] = $this->getFlash('error');
+
+
+        $this->smarty->assign($params);
 
         $this->smarty->assign('sidebar',$this->menu);
 
@@ -131,6 +141,11 @@ class Nui extends ViewRenderer
         $this->smarty->assign('logout',$this->logout);
 
         $this->smarty->registerFilter('output', array($this, 'add_block'));
+    }
+
+    private function getFlash($name)
+    {
+        return \Yii::$app->session->getFlash($name);
     }
 
     /**
