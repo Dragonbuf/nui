@@ -74,7 +74,7 @@ class SmartyBlock
      */
     public static function form($params, $content, $smarty)
     {
-        if ($params['layout']) self::$layout = $params['layout'];
+        if (isset($params['layout']) && $params['layout']) self::$layout = $params['layout'];
         if (self::$layout == 'h') {
             self::$label_class = $params['label-class'];
             self::$item_class = $params['item-class'];
@@ -91,7 +91,7 @@ class SmartyBlock
 
 
         $js = "";
-        if ($params['model']) {
+        if (isset($params['model']) && $params['model']) {
             $models = [];
             $model_strs = explode(',', $params['model']);
 
@@ -115,13 +115,13 @@ class SmartyBlock
         $attr = [];
         if (self::$layout{0} == 'h') $class[] = 'form-horizontal';
         if (self::$layout{0} == 'i') $class[] = 'form-inline';
-        if ($params['class']) $class[] = $params['class'];
+        if (isset($params['class'])) $class[] = $params['class'];
         if ($class) $attr['class'] = implode(' ', $class);
-        if ($params['name']) $attr['name'] = $params['name'];
-        if ($params['id']) $attr['id'] = $params['id'];
-        if ($params['action']) $attr['action'] = $params['action'];
-        if ($params['method']) $attr['method'] = $params['method'];
-        if ($params['enctype']) $attr['enctype'] = $params['enctype'];
+        if (isset($params['name'])) $attr['name'] = $params['name'];
+        if (isset($params['id'])) $attr['id'] = $params['id'];
+        if (isset($params['action'])) $attr['action'] = $params['action'];
+        if (isset($params['method'])) $attr['method'] = $params['method'];
+        if (isset($params['enctype'])) $attr['enctype'] = $params['enctype'];
 
         $csrf = "";
         if (strtolower($attr['method']) == 'post') {
