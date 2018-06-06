@@ -13,5 +13,10 @@
 <script src="/nuiRes/plugins/bower_components/toast-master/js/jquery.toast.js"></script>
 <script src="/nuiRes/plugins/bower_components/sweetalert/sweetalert.min.js"></script>
 <script src="/nuiRes/js/custom.min.js"></script>
-
+<script src="/nuiRes/js/custom.js"></script>
+<script src="/nuiRes/js/validator.js"></script>
+<script src="/nuiRes/js/validator.extend.js"></script>
+<script src="/nuiRes/js/template-web.js"></script>
+<script src="/nuiRes/js/jquery.page.js"></script>
+<script src="/nuiRes/js/dialog.js"></script>
 %{endbody}
