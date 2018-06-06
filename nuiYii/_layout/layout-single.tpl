@@ -41,7 +41,7 @@
 
     %{/block}
 </div>
-%{include file="file:[nui] _layout/footer-res.tpl"}
+%{include file="file:[nui]_layout/footer-res.tpl"}
 </body>
 
 </html>
