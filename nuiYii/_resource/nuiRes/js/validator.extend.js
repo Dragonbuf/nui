@@ -76,3 +76,11 @@ $.fn.validator.Constructor.VALIDATORS.file = function ($el) {
 
     return false;
 }
+
+$.fn.validator.Constructor.VALIDATORS.dropzone = function ($el) {
+    var $real_el = $el.closest('.dropzone');
+
+    if ($el.data('uploading')) return _err.uploading;
+
+    return false;
+}

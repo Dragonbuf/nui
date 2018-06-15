@@ -163,9 +163,10 @@ body {
 .panel-theme a:hover {
   color: #0791e6;
 }
+
 @media (max-width:768px){
   .container-fluid {
     padding-left: 5px;
     padding-right: 5px;
- }
+  }
 }

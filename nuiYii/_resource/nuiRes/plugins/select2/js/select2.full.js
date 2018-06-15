@@ -3051,8 +3051,6 @@ S2.define('select2/data/select',[
     var data = [];
     var self = this;
 
-    self.data = self.data || [];
-
     this.$element.find(':selected').each(function () {
       var $option = $(this);
 
@@ -3061,23 +3059,7 @@ S2.define('select2/data/select',[
       data.push(option);
     });
 
-      $.each(data, function (index, item) {
-          if ($.inArray(item, self.data) == -1) {
-              self.data.push(item);
-          }
-      });
-      var missing = [];
-      $.each(self.data, function (index, item) {
-          if ($.inArray(item, data) == -1) {
-              missing.push(index);
-          }
-      });
-      for (var i = missing.length - 1; i >= 0; i --) {
-          var index = missing[i];
-          self.data.splice(index, 1);
-      }
-
-    callback(self.data);
+    callback(data);
   };
 
   SelectAdapter.prototype.select = function (data) {
@@ -4540,50 +4522,50 @@ S2.define('select2/i18n/en',[],function () {
     }
   };
 });
-S2.define('select2/i18n/zh',[],function () {
-  // English
-  return {
-      errorLoading: function () {
-          return '无法载入结果.';
-      },
-      inputTooLong: function (args) {
-          var overChars = args.input.length - args.maximum;
+      S2.define('select2/i18n/zh',[],function () {
+          // English
+          return {
+              errorLoading: function () {
+                  return '无法载入结果.';
+              },
+              inputTooLong: function (args) {
+                  var overChars = args.input.length - args.maximum;
 
-          var message = '请删除 ' + overChars + ' 个字符';
+                  var message = '请删除 ' + overChars + ' 个字符';
 
-          if (overChars != 1) {
-              message += 's';
-          }
+                  if (overChars != 1) {
+                      message += 's';
+                  }
 
-          return message;
-      },
-      inputTooShort: function (args) {
-          var remainingChars = args.minimum - args.input.length;
+                  return message;
+              },
+              inputTooShort: function (args) {
+                  var remainingChars = args.minimum - args.input.length;
 
-          var message = '请再输入至少 ' + remainingChars + ' 个字符';
+                  var message = '请再输入至少 ' + remainingChars + ' 个字符';
 
-          return message;
-      },
-      loadingMore: function () {
-          return '载入更多结果…';
-      },
-      maximumSelected: function (args) {
-          var message = '最多只能选择 ' + args.maximum + ' 个项目';
+                  return message;
+              },
+              loadingMore: function () {
+                  return '载入更多结果…';
+              },
+              maximumSelected: function (args) {
+                  var message = '最多只能选择 ' + args.maximum + ' 个项目';
 
-          if (args.maximum != 1) {
-              message += 's';
-          }
+                  if (args.maximum != 1) {
+                      message += 's';
+                  }
 
-          return message;
-      },
-      noResults: function () {
-          return '未找到结果';
-      },
-      searching: function () {
-          return '搜索中…';
-      }
-  };
-});
+                  return message;
+              },
+              noResults: function () {
+                  return '未找到结果';
+              },
+              searching: function () {
+                  return '搜索中…';
+              }
+          };
+      });
 S2.define('select2/defaults',[
   'jquery',
   'require',
