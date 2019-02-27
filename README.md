@@ -1,5 +1,7 @@
 Usage
 -----
+composer install dragonbuf/nui
+-----
 
 To use this extension, simply add the following code in your application configuration:
 
@@ -71,7 +73,8 @@ return [
 ```
 
 
-in your controller 
+
+SiteController
 
 ```
 public $layout = false
@@ -81,7 +84,18 @@ public function actionIndex()
 }
 ```
 
-in your view 
+a.tpl 
 ```
 %{extends "_layout/layout.tpl"}
+
+<div class="row">
+    <div class="col-md-12">
+        %{block name="main"}
+        <div class="white-box">
+            <h3 class="box-title">you can begin your view in this </h3>
+        </div>
+
+        %{/block}
+    </div>
+</div>
 ```
