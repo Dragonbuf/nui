@@ -1,6 +1,6 @@
 Usage
 -----
-composer install dragonbuf/nui
+    composer install dragonbuf/nui
 -----
 
 To use this extension, simply add the following code in your application configuration:
@@ -98,4 +98,15 @@ a.tpl
         %{/block}
     </div>
 </div>
+```
+
+
+
+
+#### notice
+you can set flash message in Controller,nui will show error or success message in flash
+```
+\Yii::$app->getSession()->setFlash('error', 'This is the message');
+  
+\Yii::$app->getSession()->setFlash('success', 'This is the message');
 ```
