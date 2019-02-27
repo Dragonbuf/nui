@@ -80,13 +80,21 @@ SiteController
 public $layout = false
 public function actionIndex()
 {
-    return $this->render('a.tpl');
+    return $this->render('index.tpl');
 }
 ```
 
-a.tpl 
+index.tpl 
 ```
 %{extends "_layout/layout.tpl"}
+
+%{block name="page-title"}main%{/block}
+
+%{block name="page-action"}
+    <a href="javascript: void(0);" target="_blank" class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">DELETE</a>
+    %{/block}
+
+
 
 <div class="row">
     <div class="col-md-12">
