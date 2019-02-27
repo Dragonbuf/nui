@@ -69,3 +69,19 @@ return [
     ],
 ];
 ```
+
+
+in your controller 
+
+```
+public $layout = false
+public function actionIndex()
+{
+    return $this->render('a.tpl');
+}
+```
+
+in your view 
+```
+%{extends "_layout/layout.tpl"}
+```
