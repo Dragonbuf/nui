@@ -142,7 +142,15 @@ class Nui extends ViewRenderer
 
         $this->smarty->registerFilter('output', array($this, 'add_block'));
     }
-
+    
+    public function render($view, $file, $params)
+    {
+        $params['csrf_token'] = \Yii::$app->request->csrfToken;
+        $params['success'] = \Yii::$app->getSession()->getFlash('success', null) ?? false; 
+        $params['error'] = \Yii::$app->getSession()->getFlash('error', null) ?? false;
+        return parent::render($view, $file, $params);
+    }
+    
     private function getFlash($name)
     {
         return \Yii::$app->session->getFlash($name);
